@@ -1,5 +1,10 @@
+import UserService from '../services/userService.js'
+
 const register = async (req, res, next) => {
-  console.log('register', req.body)
+  const userService = new UserService()
+
+  await userService.create(req.body)
+
   next()
 }
 

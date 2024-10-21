@@ -21,11 +21,11 @@ export async function initializeDatabase() {
     logger.info('Database connected successfully')
   } catch (error) {
     logger.error(error)
-    process.exit(1);
+    process.exit(1)
   }
 }
 
-export default function getDatabase() {
+export function getDatabase() {
   if (!db) {
     logger.error('Database not found')
   }

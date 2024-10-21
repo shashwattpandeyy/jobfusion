@@ -2,8 +2,11 @@ import express from 'express'
 import initializeRoutes from './routes/index.js'
 import { initializeDatabase } from './database/index.js'
 import expressLogger from './middlewares/expressLogger.js'
+import logger from './logger.js'
 
 async function App() {
+  logger.info('🚀 Starting Server')
+
   const app = express()
 
   app.use(expressLogger)

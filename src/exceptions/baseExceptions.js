@@ -1,5 +1,5 @@
 export class BaseException extends Error {
-  constructor(status, message) {
+  constructor(message, status) {
     super(message)
     this.status = status
   }

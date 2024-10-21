@@ -1,7 +1,7 @@
 import { BaseException } from './baseExceptions.js'
 
-export class ForbiddenException extends BaseException {
+export class UniqueEmailException extends BaseException {
   constructor(message) {
-    super(message, 403)
+    super(message)
   }
 }

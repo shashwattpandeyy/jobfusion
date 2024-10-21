@@ -7,7 +7,7 @@ import logger from './src/logger.js'
 
 configDotenv({ path: `.env.${process.env.NODE_ENV || 'staging'}` })
 
-async function initializeServer() {
+async function createServer() {
   const server = http.createServer(await app())
 
   // const wss = new WebSocketServer({ noServer: true })
@@ -36,8 +36,13 @@ async function initializeServer() {
   //   }
   // })
 
+  return server
+}
+
+async function serverStart() {
+  const server = await createServer()
   const port = process.env.PORT
   server.listen(port, () => logger.info(`server is running on port ${port} process id ${process.pid}`))
 }
 
-initializeServer()
+serverStart()
