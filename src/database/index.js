@@ -1,8 +1,10 @@
 import Knex from 'knex'
 import logger from '../logger.js'
 
+let db
+
 export async function initializeDatabase() {
-  const db = Knex({
+  db = Knex({
     client: 'pg',
     connection: {
       host: process.env.DB_HOST,
@@ -18,6 +20,15 @@ export async function initializeDatabase() {
     await db.raw('SELECT 1')
     logger.info('Database connected successfully')
   } catch (error) {
-    // throw new DatabaseError();
+    logger.error(error)
+    process.exit(1);
   }
+}
+
+export default function getDatabase() {
+  if (!db) {
+    logger.error('Database not found')
+  }
+
+  return db
 }

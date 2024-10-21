@@ -36,8 +36,6 @@ async function initializeServer() {
   //   }
   // })
 
-  logger.warn('WARNIGN')
-  logger.error('error')
   const port = process.env.PORT
   server.listen(port, () => logger.info(`server is running on port ${port} process id ${process.pid}`))
 }
