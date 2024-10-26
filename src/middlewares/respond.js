@@ -1,5 +1,12 @@
+import { includes } from "lodash-es";
+
 export default function respond(req, res, next) {
-  const data = req["locals"];
+  const data = res.locals["data"];
   
-  return res.status(200).send(data)
+  if (includes(['/register'], req.url)) { 
+    return res.status(201).send()
+  }
+  
+  console.log('data', data)
+  return res.json(data)
 }

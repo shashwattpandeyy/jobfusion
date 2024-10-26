@@ -1,12 +1,13 @@
 import { Router } from 'express'
 import asyncHandler from 'express-async-handler'
 import { get, register, reset, update } from '../controllers/userController.js'
+import respond from '../middlewares/respond.js'
 
 export default function userRouter() {
   const router = Router()
 
   //create user detail
-  router.post('/register', asyncHandler(register))
+  router.post('/register', asyncHandler(register), respond)
 
   //return full user data
   router.get('/:id', asyncHandler(get))

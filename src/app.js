@@ -3,6 +3,7 @@ import initializeRoutes from './routes/index.js'
 import { initializeDatabase } from './database/index.js'
 import expressLogger from './middlewares/expressLogger.js'
 import logger from './logger.js'
+import errorHandler from './middlewares/errorHandler.js'
 
 async function App() {
   logger.info('🚀 Starting Server')
@@ -24,6 +25,8 @@ async function App() {
   app.use('/users', routes.userRoute)
 
   app.use('/interview', routes.interviewRoute)
+  
+  app.use(errorHandler)
 
   return app
 }

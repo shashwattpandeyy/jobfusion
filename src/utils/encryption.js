@@ -11,3 +11,4 @@ export async function hashPassword(password) {
   const hash = await bcrypt.hash(password, salt)
   return hash
 }
+

@@ -4,7 +4,7 @@ const register = async (req, res, next) => {
   const userService = new UserService()
 
   await userService.create(req.body)
-
+ 
   next()
 }
 
